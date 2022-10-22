@@ -10,6 +10,11 @@ class Test{
         
         $this->name = $name;
     }
+
+    public function set(string $name){
+        
+        $this->name = $name;
+    }
     
     public function getName(){
 
