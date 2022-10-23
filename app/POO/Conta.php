@@ -7,12 +7,12 @@ class Conta
 
     private $conta = [];
 
-    public function __construct(string $cpf, string $name, float $saldo)
+    public function __construct($cpf, $name, $saldo)
     {
         $this->conta = [
             $cpf => [
-                $name,
-                $saldo
+                "name" => $name,
+                "saldo" => $saldo
             ]
         ];
     }

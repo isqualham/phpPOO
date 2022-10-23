@@ -10,7 +10,7 @@ class TestController extends Controller
 {
     public function index(){
         
-        $e = new Conta("023.454.911-40","william",500);
+        $e = new Conta("023.454.911-40","william",500.200);
 
         echo $e->getConta();       
     }
