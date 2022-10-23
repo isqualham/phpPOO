@@ -17,9 +17,28 @@ class Conta
         ];
     }
 
+
     public function getConta()
     {
-
-        return json_encode($this->conta);
+        return $this->conta;
     }
+
+    
+    public function setSacarConta($cpf, $valor)
+    {       
+
+        $this->conta[$cpf]['saldo'] -= $valor;
+    }
+
+    public function operacaoSacar($cpf, $valor){
+
+        if( $this->conta[$cpf]['saldo'] < $valor)
+            return 'saldo insuficiente, seu saldo atula é: R$ '.
+            $this->conta[$cpf]['saldo'];
+        
+        $this->setSacarConta($cpf, $valor);
+
+        return 'saque com sucesso seu saldo é: R$ '. $this->conta[$cpf]['saldo'];
+    }
+    
 }
