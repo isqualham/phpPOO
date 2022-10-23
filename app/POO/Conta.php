@@ -6,7 +6,7 @@ class Conta
 {
     private $conta = [];
 
-    public function __construct($cpf, $name, $saldo)
+    public function __construct(string $cpf, string $name, float $saldo)
     {
         $this->conta = [
             $cpf => [
@@ -21,20 +21,35 @@ class Conta
         return $this->conta;
     }
 
-    public function setSaldo($cpf, $valor)
+    public function operacaoSacar(string $cpf, float $valor):array
     {
+        if ($this->conta[$cpf]['saldo'] < $valor)            
+            return [
+                'menssage'=>'saldo insuficiente',
+                $this->getConta()
+            ];
+
         $this->conta[$cpf]['saldo'] -= $valor;
+
+        return [
+            'menssage'=>'saque realizado com sucesso',
+            $this->getConta()
+        ];
     }
 
-    public function operacaoSacar($cpf, $valor)
+    public function operacaoDepositar(string $cpf, float $valor):array
     {
-        if ($this->conta[$cpf]['saldo'] < $valor)
-            return 'saldo insuficiente, seu saldo atula é: R$ ' .
-                    $this->conta[$cpf]['saldo'];
+        if($valor < 0)
+            return [
+                'menssage'=>'depositos precizam ser positivos',
+                'extrado' =>$this->getConta()
+            ];
 
-        $this->setSaldo($cpf, $valor);
+        $this->conta[$cpf]['saldo'] += $valor;
 
-        return 'saque com sucesso seu saldo é: R$ ' .
-                $this->conta[$cpf]['saldo'];
+        return [
+            'menssage'=>'deposito realizado com sucesso',
+            'extrado' =>$this->getConta()
+        ];
     }
 }

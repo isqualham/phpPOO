@@ -10,7 +10,7 @@ class TestController extends Controller
         
         $conta = new Conta("023.454.911-40","william",500.200);
 
-        return response()->json($conta->operacaoSacar("023.454.911-40", 200.2));
+        return response()->json($conta->operacaoDepositar("023.454.911-40", -1));
         
     }
 }
