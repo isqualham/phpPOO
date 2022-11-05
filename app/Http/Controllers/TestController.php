@@ -15,5 +15,8 @@ class TestController extends Controller
         // return response()->json($conta->operacaoDepositar("023.454.911-40", 20));
        
         // test::dispatch();
+
+        return testTrait::nome("william de freitas");
+        
     }
 }
