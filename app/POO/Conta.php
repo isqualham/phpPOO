@@ -6,7 +6,7 @@ class Conta
 {
     private string $cpf;
     private string $name;
-    private string $saldo;
+    private float $saldo;
 
     public function __construct(string $cpf, string $name)
     {

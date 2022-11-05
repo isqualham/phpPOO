@@ -14,7 +14,7 @@ class TestController extends Controller
         $conta2 = new Conta("023.454.911-40","william");
 
         $conta1->depositar(1000);
-        $conta1->transferir(200, $conta2);
+        $conta1->transferir(-1, $conta2);
 
         return [
             "saldo 1: {$conta1->getSaldo()} - saldo 2: {$conta2->getSaldo()}"
