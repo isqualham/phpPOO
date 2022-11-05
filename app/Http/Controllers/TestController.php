@@ -10,7 +10,9 @@ class TestController extends Controller
 
     public function index(){
         
-        // $conta = new Conta("023.454.911-40","william",500.200);
+        $conta = new Conta("023.454.911-40","william");
+
+        $conta->sacar(12);
 
         // return response()->json($conta->operacaoDepositar("023.454.911-40", 20));
        
