@@ -11,44 +11,53 @@ class Conta
     public function __construct(string $cpf, string $name)
     {
         $this->cpf = $cpf;
-        $this->name = $name; 
-    } 
-    
-    public function setSaldo(float $saldo){
-        $this->saldo = $saldo;
+        $this->name = $name;
+        $this->saldo = 0; 
     }
 
     public function getSaldo():float{return $this->saldo;}
 
     public function sacar(float $valor):array
     {
-        if ($this->$valor < $valor)            
-            return [
-                'menssage'=>'saldo insuficiente',
-                $this->conta
-            ];
+        if ($this->saldo < $valor)            
+            return $this->message('saldo insuficiente',$this->saldo);
 
-        $this->valor -= $valor;
+        $this->saldo -= $valor;
 
-        return [
-            'menssage'=>'saque realizado com sucesso, seu valor atual é',
-            $this->conta
-        ];
+        return $this->message('saque realizado com sucesso',$this->saldo);
     }
 
     public function depositar(float $valor):array
     {
         if($valor < 0)
-            return [
-                'menssage'=>'depositos precizam ser positivos',
-                'extrado' =>$this->conta
-            ];
+            return $this->message('depositos precizam ser positivos',$this->saldo);
 
         $this->saldo += $valor;
+        
+        return $this->message('deposito realizado com sucesso',$this->saldo);
 
+    }
+
+    public function transferir(float $valor, Conta $contaTransferir):array
+    {
+        if($valor < 0)
+            return $this->message('transferencia precizam ser positivos',$this->saldo);
+        
+        if($this->saldo < $valor)
+            return $this->message('saldo é menor que o valor da transferencia',$this->saldo);
+
+        $this->saldo -= $valor;
+
+        $contaTransferir->depositar($valor);
+        
+        return $this->message('trasnferencia realizado com sucesso: ',$valor);
+
+    }
+
+    private function message(string $message, float $conta):array{
         return [
-            'menssage'=>'deposito realizado com sucesso, seu extrado é ',
-            'extrado' =>$this->conta
+            'menssage'=>$message,
+            'extrado' =>$conta
         ];
     }
 }
