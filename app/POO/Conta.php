@@ -14,7 +14,8 @@ class Conta
     }
 
     public function getSaldo():float{return $this->saldo;}
-    public function getTitularName():string{return $this->titular->getName();}
+    
+    public function getTitularName():Titular{return $this->titular;}
 
     public function sacar(float $valor):array
     {
