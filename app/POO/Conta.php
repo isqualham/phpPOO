@@ -4,18 +4,17 @@ namespace App\POO;
 
 class Conta
 {
-    private string $cpf;
-    private string $name;
+    private Titular $titular;
     private float $saldo;
 
-    public function __construct(string $cpf, string $name)
+    public function __construct(Titular $titular)
     {
-        $this->cpf = $cpf;
-        $this->name = $name;
+        $this->titular = $titular;
         $this->saldo = 0; 
     }
 
     public function getSaldo():float{return $this->saldo;}
+    public function getTitularName():string{return $this->titular->getName();}
 
     public function sacar(float $valor):array
     {
