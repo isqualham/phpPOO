@@ -14,6 +14,7 @@ class Titular
     }
 
     public function getName():string{return $this->name;}
-    
+
     public function getCpf():string{return $this->cpf;}
+
 }

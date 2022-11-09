@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\test;
 use App\POO\Conta;
+use App\POO\ContaCorrente;
 use App\POO\Titular;
 
 class TestController extends Controller
@@ -22,11 +23,6 @@ class TestController extends Controller
             "titular conta 1 : {$conta1->getTitularName()->getName()}"
         ];
 
-        // return response()->json($conta->operacaoDepositar("023.454.911-40", 20));
-       
-        // test::dispatch();
-
-        //return testTrait::nome("william de freitas");
         
     }
 }
