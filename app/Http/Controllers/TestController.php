@@ -6,7 +6,9 @@ use App\Jobs\test;
 use App\POO\Conta;
 use App\POO\ContaCorrente;
 use App\POO\Titular;
+use Exception;
 use Illuminate\Http\Request;
+use Throwable;
 
 class TestController extends Controller
 {
@@ -23,6 +25,14 @@ class TestController extends Controller
         //     "saldo 1: {$conta1->getSaldo()} - saldo 2: {$conta2->getSaldo()}",
         //     "titular conta 1 : {$conta1->getTitularName()->getName()}"
         // ];
+
+        try{
+            2/'a';
+
+        }catch(Throwable $problema){
+
+            return 'problema: '.$problema->getMessage();
+        }
 
                
     }
